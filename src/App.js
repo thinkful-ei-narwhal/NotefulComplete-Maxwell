@@ -1,26 +1,56 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
+import HomePage from './components/HomePage'
+import Notes from './components/Notes'
+import Folder from './components/Folder'
+import NotFound from './components/NotFound'
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Link to = '/Notes' > Noteful </Link>
+
+
+      <Switch>
+
+        <Route exact path = '/'> <HomePage /> </Route>
+        
+        <Route exact path = '/Notes'> 
+          <Notes />
+        </Route>
+
+        <Route  path = '/Folder'> 
+          <Folder />
+        </Route>
+
+        
+        <Route component = {NotFound} />
+
+      </Switch>
+
+
     </div>
   );
 }
 
 export default App;
+
+
+
+      /* //header
+      //folder - // notes - //delete
+      //add folder 
+      //add note
+
+      //main route -> home page
+      //folder route -> dynamic -> /folder/<folder-name> 
+      //dynamic note route -> /note/<note-id>
+      */

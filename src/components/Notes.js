@@ -16,7 +16,7 @@ toggleDisplay = () => {
 }
 
 render(){
-    console.log(this.props.id)
+    // console.log(this.props.id)
     return(
         <Link to = {`/Notes/${this.props.id}`}>
             <div key={this.props.id} id={this.props.id}>

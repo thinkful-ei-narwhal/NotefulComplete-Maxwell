@@ -16,7 +16,6 @@ toggleDisplay = () => {
 }
 
 render(){
-    console.log(this.props.id)
     return(
         <div key={this.props.id} id={this.props.id}>
             <h2>{this.props.name}</h2>

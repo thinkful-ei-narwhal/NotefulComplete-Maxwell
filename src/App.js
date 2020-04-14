@@ -12,6 +12,7 @@ import FolderList from './components/FolderList'
 import NotFound from './components/NotFound'
 import Notes from './components/Notes'
 import NotesWithDesc from './components/NoteWithDesc'
+import EachFolder from './components/EachFolder'
 
 class App extends React.Component {
   // console.log(props.store) this is the store object in index
@@ -143,18 +144,25 @@ class App extends React.Component {
 
         <h1>Sub For Header</h1>
 
-          <Route exact path='/' component = {() => <NotesList notes = {this.state.notes}/>}/>
-          <Route exact path='/' component = {() => <FolderList folders = {this.state.folders}/>}/>
+        <Route exact path='/' component={() => <NotesList notes={this.state.notes} />} />
+        <Route exact path='/' component={() => <FolderList folders={this.state.folders} />} />
 
-          <Route exact path='/Folder/:folderId' render = {(routeprops) => <FolderList {...routeprops} folders = {this.state.folders}/>} />
+        {/*<Route exact path='/Folder/:folderId' render = {(routeprops) => <FolderList {...routeprops} folders = {this.state.folders}/>} />*/}
+        <Route exact path='/Folder/:folderId' render={(routeprops) => {
+          const folderId = routeprops.match.params.folderId
+          const folder = this.state.folders.find(id => id.id === folderId) || {}
+          return <EachFolder {...routeprops} id={folder.id} name={folder.name} store={this.state} />
+        }} />
 
-          <Route exact path = '/Notes/:noteId' render = {(routeprops) =>  {
-            const noteId = routeprops.match.params.noteId
-            const note = this.state.notes.find(id => id.id === noteId) || {}
-          return <NotesWithDesc {...routeprops} id = {note.id} name = {note.name} content = {note.content} folderId = {note.folderId}/>}} />
+
+        <Route exact path='/Notes/:noteId' render={(routeprops) => {
+          const noteId = routeprops.match.params.noteId
+          const note = this.state.notes.find(id => id.id === noteId) || {}
+          return <NotesWithDesc {...routeprops} id={note.id} name={note.name} content={note.content} folderId={note.folderId} />
+        }} />
 
 
-          {/* <Route component={NotFound} /> */}
+        {/* <Route component={NotFound} /> */}
 
       </div>
     );

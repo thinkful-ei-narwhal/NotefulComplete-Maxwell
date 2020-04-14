@@ -4,15 +4,19 @@ import Folder from './Folder.js'
 
 
 class FolderList extends React.Component {
+    render () {
 
-render(){
-    // console.log("this is the folder store",this.props.store) receives store from index.js
-    return(
+    const folderList = this.props.folders.map(folder => {
+        return <Folder key = {folder.id} name = {folder.name} />
+     })
+
+    return (
         <div>
-            <h1> FolderList  </h1>
+            {folderList}
         </div>
     )
-}
+    }
+
 
 }
 

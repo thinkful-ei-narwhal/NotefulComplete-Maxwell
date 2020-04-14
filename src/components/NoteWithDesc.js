@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 class Notes extends React.Component {
 
@@ -18,12 +18,10 @@ toggleDisplay = () => {
 render(){
     console.log(this.props.id)
     return(
-        <Link to = {`/Notes/${this.props.id}`}>
-            <div key={this.props.id} id={this.props.id}>
-                <h2>{this.props.name}</h2>
-            </div>
-        </Link>
-        
+        <div key={this.props.id} id={this.props.id}>
+            <h2>{this.props.name}</h2>
+            <p>{this.props.content}</p>
+        </div>
     )
 }
 

@@ -10,13 +10,13 @@ import HomePage from './components/HomePage'
 import NotesList from './components/NotesList'
 import FolderList from './components/FolderList'
 import NotFound from './components/NotFound'
-
-
+import Notes from './components/Notes'
+import NotesWithDesc from './components/NoteWithDesc'
 
 class App extends React.Component {
   // console.log(props.store) this is the store object in index
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state =
     {
       "folders": [
@@ -142,35 +142,25 @@ class App extends React.Component {
         {/* <Link to='/Folder' > Noteful </Link> */}
 
         <h1>Sub For Header</h1>
-        {/* <Switch> */}
 
-        {/* <Route exact path='/'> <HomePage /> </Route> */}
+          <Route exact path='/' component = {() => <NotesList notes = {this.state.notes}/>}/>
+          <Route exact path='/' component = {() => <FolderList folders = {this.state.folders}/>}/>
 
-        {/* <Route path='/Folder'> */}
-        <FolderList folders={this.state.folders} />
-        {/* </Route> */}
-        {/* <Route exact path='/Notes'> */}
-        <NotesList notes={this.state.notes} />
-        {/* </Route> */}
+          <Route exact path='/Folder/:folderId' render = {(routeprops) => <FolderList {...routeprops} folders = {this.state.folders}/>} />
+
+          <Route exact path = '/Notes/:noteId' render = {(routeprops) =>  {
+            const noteId = routeprops.match.params.noteId
+            const note = this.state.notes.find(id => id.id === noteId) || {}
+          return <NotesWithDesc {...routeprops} id = {note.id} name = {note.name} content = {note.content} folderId = {note.folderId}/>}} />
 
 
-
-        {/* <Route component={NotFound} /> */}
-
-        {/* </Switch> */}
+          {/* <Route component={NotFound} /> */}
 
       </div>
     );
   }
 }
+
+
 export default App;
 
-/* //header
-//folder - // notes - //delete
-//add folder
-//add note
-
-//main route -> home page
-//folder route -> dynamic -> /folder/<folder-name>
-//dynamic note route -> /note/<note-id>
-*/

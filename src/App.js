@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import './App.css';
 import HomePage from './components/HomePage'
-import Notes from './components/Notes'
-import Folder from './components/Folder'
+import NotesList from './components/Notes'
+import FolderList from './components/Folder'
 import NotFound from './components/NotFound'
 
 
@@ -143,11 +143,11 @@ class App extends React.Component {
           <Route exact path='/'> <HomePage /> </Route>
 
           <Route exact path='/Notes'>
-            <Notes />
+            <NotesList store={this.store}/>
           </Route>
 
           <Route path='/Folder'>
-            <Folder store={this.store} />
+            <FolderList store={this.store} />
           </Route>
 
           <Route component={NotFound} />

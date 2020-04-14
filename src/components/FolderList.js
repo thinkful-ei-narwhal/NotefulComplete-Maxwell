@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Folder from './Folder.js'
-
+import './folderList.css'
 
 class FolderList extends React.Component {
     render () {
@@ -11,7 +11,7 @@ class FolderList extends React.Component {
      })
 
     return (
-        <div>
+        <div className="folderList">
             {folderList}
         </div>
     )

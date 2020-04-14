@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Notes from './Notes'
-
+import './notesList.css'
 
 class NotesList extends React.Component {
 
@@ -10,7 +10,7 @@ render(){
         return <Notes key={note.id} id={note.id} name={note.name} content={note.content}/>
     });
     return(
-        <div>
+        <div className="notesList">
             <h1> NoteList  </h1>
             {notes}
         </div>

@@ -5,11 +5,11 @@ class Notes extends React.Component {
 
 
 render(){
+    console.log(this.props.id)
     return(
-        <div>
-
-            <p> Notes</p>
-
+        <div key={this.props.id} id={this.props.id}>
+            <h2>{this.props.name}</h2>
+            <p>{this.props.content}</p>
         </div>
     )
 }

@@ -7,7 +7,7 @@ class FolderList extends React.Component {
     render () {
 
     const folderList = this.props.folders.map(folder => {
-        return <Folder key = {folder.id} name = {folder.name} />
+        return <Folder key = {folder.id} id={folder.id} name = {folder.name} />
      })
 
     return (

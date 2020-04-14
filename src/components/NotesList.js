@@ -6,11 +6,13 @@ import Notes from './Notes'
 class NotesList extends React.Component {
 
 render(){
-console.log('Notes', this.props.notes)
+    const notes = this.props.notes.map(note => {
+        return <Notes key={note.id} id={note.id} name={note.name} content={note.content}/>
+    });
     return(
         <div>
             <h1> NoteList  </h1>
-            <Notes />
+            {notes}
         </div>
     )
 }

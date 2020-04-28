@@ -15,7 +15,6 @@ class Folder extends React.Component {
             </Link>
         )
     }
-
 }
 
 export default Folder

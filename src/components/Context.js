@@ -23,7 +23,7 @@ export class ContextProvider extends Component {
       })
       .catch(err => console.log(err))
   }
-  addNoteToApi = (noteTitle, noteDescription) => {
+  addNoteToApi = (noteTitle, noteDescription, noteFolderId) => {
     const options = {
       method: 'POST',
       body: JSON.stringify({
@@ -41,7 +41,8 @@ export class ContextProvider extends Component {
           {
             name: noteTitle,
             content: noteDescription,
-            id: result.id
+            id: result.id,
+            folderId: noteFolderId,
           }
         ]
         })
@@ -80,13 +81,20 @@ export class ContextProvider extends Component {
       .catch(err => console.log(err))
   }
 
+  findFolderById = (folderId) => {
+    let folder = this.state.folders.find((folder) => folderId === folder.id);
+
+    return folder;
+  }
+
   render() {
     return (
       <Context.Provider value={{
         ...this.state,
         deleteNote: this.deleteNote,
         folderToApi: this.folderToApi,
-        addNoteToApi: this.addNoteToApi
+        addNoteToApi: this.addNoteToApi,
+        findFolderById: this.findFolderById
       }}>
         {this.props.children}
       </Context.Provider>

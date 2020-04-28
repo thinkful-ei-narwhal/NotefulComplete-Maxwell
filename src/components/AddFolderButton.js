@@ -22,7 +22,15 @@ class AddFolderButton extends Component {
             <form onSubmit={(event) => {
                 event.preventDefault();
                 let folderName = event.target.newFolder.value;
-                this.context.folderToApi(folderName)
+                if(folderName === ''){
+                    alert("Please enter a folder name");
+                }
+                else if (folderName.length < 3){
+                    alert('Folder names are a minimum of 3 characters in length');
+                }
+                else{
+                    this.context.folderToApi(folderName);
+                }
             }}>
                 <p>Add a new folder</p>
                 <input type="text" name="newFolder"></input>

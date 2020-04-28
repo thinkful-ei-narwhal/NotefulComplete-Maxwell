@@ -8,7 +8,6 @@ import AddNote from './AddNote';
 class NotesList extends React.Component {
     static contextType = Context;
     render() {
-        console.log(this.context.notes)
         const notes = this.context.notes.map(note => {
             return <Notes key={note.id} id={note.id} name={note.name} content={note.content} />
         });

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 import { Context } from './Context';
 
+import PropTypes from 'prop-types';
+
 class Notes extends React.Component {
     static contextType = Context;
     constructor(props) {
@@ -18,7 +20,6 @@ class Notes extends React.Component {
     }
 
     render() {
-        // console.log(this.props.id)
         return (
             <> 
             <Link to={`/Notes/${this.props.id}`}>
@@ -30,8 +31,10 @@ class Notes extends React.Component {
             </>
         )
     }
-
 }
-
+Notes.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+};
 
 export default Notes

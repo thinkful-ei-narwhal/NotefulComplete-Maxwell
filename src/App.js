@@ -11,14 +11,13 @@ import NotesList from './components/NotesList';
 import FolderList from './components/FolderList';
 import NotFound from './components/NotFound';
 import Notes from './components/Notes';
-import NotesWithDesc from './components/NoteWithDesc';
+import NotesWithDesc from './components/NotesWithDesc';
 import EachFolder from './components/EachFolder';
 import { Context } from './components/Context';
 import ErrorBoundary from './components/ErrorBoundary';
 
 class App extends React.Component {
   static contextType = Context;
-
   render() {
     return (
       /* Provides notes and folders objects to children. Wrapped entire App div so that its children have access to these properties.  */

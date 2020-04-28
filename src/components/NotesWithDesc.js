@@ -1,10 +1,11 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
+import React from 'react';
+import { Route } from 'react-router-dom';
+import { Context } from './Context';
 
 import PropTypes from 'prop-types';
 
-class Notes extends React.Component {
-
+class NotesWithDesc extends React.Component {
+    static contextType = Context;
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +17,6 @@ class Notes extends React.Component {
     toggleDisplay = () => {
         (this.state.displayContent) ? this.setState({ displayContent: true }) : this.setState({ displayContent: false })
     }
-
     render() {
         return (
             <div key={this.props.id} id={this.props.id}>
@@ -27,10 +27,11 @@ class Notes extends React.Component {
     }
 }
 
-Notes.propTypes = {
-    id: PropTypes.number,
-    name: PropTypes.string,
-    content: PropTypes.string
+NotesWithDesc.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    folderId: PropTypes.string.isRequired
 };
 
-export default Notes
+export default NotesWithDesc
